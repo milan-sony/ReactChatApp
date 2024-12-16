@@ -10,7 +10,7 @@ import { useAuthStore } from '../store/userAuthStore';
 
 function Router() {
 
-    const { authUser, checkAuth, isCheckingAuth } = useAuthStore()
+    const { authUser } = useAuthStore()
 
     return (
         <Routes>
