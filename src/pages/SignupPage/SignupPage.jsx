@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useAuthStore } from "../../store/userAuthStore"
 import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { Link } from 'react-router'
+import toast from 'react-hot-toast'
 
 function SignupPage() {
 
@@ -14,7 +15,28 @@ function SignupPage() {
 
     const { signup, isSigningUp } = useAuthStore()
 
-    const validateForm = () => { }
+    const validateForm = () => {
+        // Check for empty fields
+        const { fullName, email, password } = formData // destructuring
+
+        if (!fullName) {
+            return toast.error("Full name is required")
+        }
+        if (!email) {
+            return toast.error("Email is required")
+        }
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            return toast.error("Invalid email address")
+        }
+        if (!password) {
+            return toast.error("Password is required")
+        }
+        if (password.length < 6) {
+            return toast.error("Password must be at least 6 characters")
+        }
+
+        return true
+    }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -24,6 +46,10 @@ function SignupPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("formData", formData)
+        const success = validateForm()
+        if(success === true){
+            signup(formData)
+        }
     }
 
     return (
@@ -33,7 +59,7 @@ function SignupPage() {
                     <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
                         <h2 className="text-2xl uppercase font-black mb-1 font-Open-Sans text-custblue">Signup</h2>
                         <p className="text-gray-600 mb-6 text-sm">Get started with your free account</p>
-                        <form autoComplete="off" onSubmit={handleSubmit}>
+                        <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                             <div className="space-y-2">
                                 <div><label className="text-gray-600 mb-2 block"></label>Full Name<input type="text" name="fullName" value={formData.fullName} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="Milan Sony" onChange={handleChange} />
                                 </div>
