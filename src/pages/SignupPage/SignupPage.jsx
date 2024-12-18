@@ -56,20 +56,20 @@ function SignupPage() {
         <>
             <div className='w-full'>
                 <div className="contain py-16">
-                    <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
+                    <div className="bg-white max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden dark:bg-slate-900">
                         <h2 className="text-2xl uppercase font-black mb-1 font-Open-Sans text-custblue">Signup</h2>
-                        <p className="text-gray-600 mb-6 text-sm">Get started with your free account</p>
+                        <p className="text-gray-600 mb-6 text-sm dark:text-white font-Open-Sans">Get started with your free account</p>
                         <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-                            <div className="space-y-2">
-                                <div><label className="text-gray-600 mb-2 block"></label>Full Name<input type="text" name="fullName" value={formData.fullName} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="Milan Sony" onChange={handleChange} />
+                            <div className="space-y-2 mb-2">
+                                <div><label className="text-gray-600 dark:text-white mb-2 block">Full Name</label><input type="text" name="fullName" value={formData.fullName} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="Full name" onChange={handleChange} />
                                 </div>
                             </div>
-                            <div className="space-y-2">
-                                <div><label className="text-gray-600 mb-2 block"></label>Email address<input type="email" name="email" value={formData.email} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="youremail.@domain.com" onChange={handleChange} />
+                            <div className="space-y-2 mb-2">
+                                <div><label className="text-gray-600 dark:text-white mb-2 block">Email address</label><input type="email" name="email" value={formData.email} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="youremail.@domain.com" onChange={handleChange} />
                                 </div>
                             </div>
-                            <div className="space-y-2">
-                                <div><label className="text-gray-600 mb-2 block"></label>Password<div className="relative"><input type={showPassword ? "text" : "password"} name="password" value={formData.password} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="password" onChange={handleChange} />
+                            <div className="space-y-2 mb-2">
+                                <div><label className="text-gray-600 dark:text-white mb-2 block">Password</label><div className="relative"><input type={showPassword ? "text" : "password"} name="password" value={formData.password} className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:outline-custblue placeholder-gray-400" placeholder="Password" onChange={handleChange} />
                                     <div
                                         className="cursor-pointer absolute inset-y-0 right-0 flex items-center px-8 text-gray-600 border-l border-gray-300" onClick={() => setShowPassword(!showPassword)}>
                                         {/* toggle eye icon */}
@@ -96,7 +96,7 @@ function SignupPage() {
                                     }
                                 </button>
                                 <div className="flex gap-2 pt-5">
-                                    <p className="text-gray-600 text-sm">Already have an account?</p>
+                                    <p className="text-gray-600 text-sm dark:text-white font-Open-Sans">Already have an account?</p>
                                     <Link to="/login" className='text-custblue text-sm underline hover:text-gray-600'>Login</Link>
                                 </div>
                             </div>

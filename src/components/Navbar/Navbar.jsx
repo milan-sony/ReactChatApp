@@ -9,7 +9,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className="bg-slate-100 dark:bg-black">
+            <nav className="bg-slate-100 dark:bg-slate-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <Link to="/" className='flex items-center space-x-3 rtl:space-x-reverse'><img src={logo} className='h-8' alt='logo' /><span className="self-center text-2xl whitespace-nowrap text-custblue dark:text-custblue uppercase font-black font-Open-Sans">Chatly</span>
                     </Link>
