@@ -97,7 +97,7 @@ function SignupPage() {
                                 </button>
                                 <div className="flex gap-2 pt-5">
                                     <p className="text-gray-600 text-sm dark:text-white font-Open-Sans">Already have an account?</p>
-                                    <Link to="/login" className='text-custblue text-sm underline hover:text-gray-600'>Login</Link>
+                                    <Link to="/login" className='text-custblue text-sm underline hover:text-gray-600 font-Open-Sans'>Login</Link>
                                 </div>
                             </div>
                         </form>
