@@ -12,7 +12,7 @@ function App() {
     checkAuth()
   }, [checkAuth])
 
-  console.log("Auth user: ", authUser)
+  // console.log("Auth user: ", authUser)
 
   if (isCheckingAuth && !authUser) return (
     <div className='flex items-center justify-center h-screen'>
