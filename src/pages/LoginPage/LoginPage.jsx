@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useAuthStore } from '../../store/userAuthStore'
 import { Eye, EyeOff} from 'lucide-react'
 import { Link } from 'react-router'
+import toast from 'react-hot-toast'
 
 function LoginPage() {
     const [formData, setFormData] = useState({
@@ -9,15 +10,13 @@ function LoginPage() {
         password: ""
     })
     const [showPassword, setShowPassword] = useState(false) //toggle password
+
     const { login, isLogingIn } = useAuthStore()
 
     const validateForm = () => {
         // Check for empty fields
-        const { fullName, email, password } = formData // destructuring
+        const { email, password } = formData // destructuring
 
-        if (!fullName) {
-            return toast.error("Full name is required")
-        }
         if (!email) {
             return toast.error("Email is required")
         }
@@ -44,7 +43,7 @@ function LoginPage() {
         console.log("formData", formData)
         const success = validateForm()
         if (success === true) {
-            signup(formData)
+            login(formData)
         }
     }
 
@@ -83,12 +82,12 @@ function LoginPage() {
                                                 <span className='animate-pulse'>Loading...</span>
                                             )
                                         ) : (
-                                            "Create Account"
+                                            "Login"
                                         )
                                     }
                                 </button>
                                 <div className="flex gap-2 pt-5">
-                                    <p className="text-gray-600 text-sm dark:text-white font-Open-Sans">Dont have an account?</p>
+                                    <p className="text-gray-600 text-sm dark:text-white font-Open-Sans">Don't have an account?</p>
                                     <Link to="/signup" className='text-custblue text-sm underline hover:text-gray-600 font-Open-Sans'>signup</Link>
                                 </div>
                             </div>
