@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import { LogOut, Settings, User } from 'lucide-react'
 
 function Navbar() {
-    const { logout, authUser } = useAuthStore
+    const { logout, authUser } = useAuthStore()
 
     return (
         <>
