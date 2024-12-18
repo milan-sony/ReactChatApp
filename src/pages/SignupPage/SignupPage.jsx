@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAuthStore } from "../../store/userAuthStore"
-import { Eye, EyeOff, Loader2 } from 'lucide-react'
+import { Eye, EyeOff} from 'lucide-react'
 import { Link } from 'react-router'
 import toast from 'react-hot-toast'
 
