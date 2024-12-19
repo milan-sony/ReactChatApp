@@ -6,11 +6,11 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import SettingsPage from '../pages/SettingsPage/SettingsPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import NoPage from '../pages/NoPage/NoPage';
-import { useAuthStore } from '../store/userAuthStore';
+import { userAuthStore } from '../store/userAuthStore';
 
 function Router() {
 
-    const { authUser } = useAuthStore()
+    const { authUser } = userAuthStore()
 
     return (
         <Routes>

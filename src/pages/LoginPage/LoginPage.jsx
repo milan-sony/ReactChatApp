@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useAuthStore } from '../../store/userAuthStore'
+import { userAuthStore } from '../../store/userAuthStore'
 import { Eye, EyeOff} from 'lucide-react'
 import { Link } from 'react-router'
 import toast from 'react-hot-toast'
@@ -11,7 +11,7 @@ function LoginPage() {
     })
     const [showPassword, setShowPassword] = useState(false) //toggle password
 
-    const { login, isLogingIn } = useAuthStore()
+    const { login, isLogingIn } = userAuthStore()
 
     const validateForm = () => {
         // Check for empty fields

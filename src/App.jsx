@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import Router from './router/Router'
 import Navbar from './components/Navbar/Navbar'
-import { useAuthStore } from './store/userAuthStore'
+import { userAuthStore } from './store/userAuthStore'
 import { Loader } from 'lucide-react'
 import { Toaster } from 'react-hot-toast';
 
 function App() {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore()
+  const { authUser, checkAuth, isCheckingAuth } = userAuthStore()
 
   useEffect(() => {
     checkAuth()

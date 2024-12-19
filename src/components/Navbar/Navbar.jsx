@@ -1,11 +1,11 @@
 import React from 'react'
-import { useAuthStore } from '../../store/userAuthStore'
+import { userAuthStore } from '../../store/userAuthStore'
 import logo from "./chatIcon.png"
 import { Link } from 'react-router'
 import { LogOut, Settings, User } from 'lucide-react'
 
 function Navbar() {
-    const { logout, authUser } = useAuthStore()
+    const { logout, authUser } = userAuthStore()
 
     return (
         <>
