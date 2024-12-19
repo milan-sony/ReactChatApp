@@ -47,6 +47,10 @@ export const userAuthStore = create((set) => ({
         }
     },
 
+    updateProfile: () => {
+        console.log("Profile updated")
+    },
+
     logout: async () => {
         try {
             await axiosInstance.post("/user/logout")
