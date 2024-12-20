@@ -1,11 +1,27 @@
 import { Camera, Mail, User } from "lucide-react"
 import { userAuthStore } from "../../store/userAuthStore"
 import defaultProfilePicture from "./avatar.png"
+import { useState } from "react";
 
 const ProfilePage = () => {
     const { authUser, isUpdatingProfile, updateProfile } = userAuthStore()
 
-    const handleImageUpload = () => {
+    const [selectedImage, setSelectedImage] = useState(null)
+
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0]
+        console.log("file:", file)
+        if (!file) {
+            return
+        }
+        // read the file
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onload = async () => {
+            const base64Image = reader.result
+            setSelectedImage(base64Image)
+            await updateProfile({ profilePic: base64Image })
+        }
     };
 
     return (
@@ -21,7 +37,7 @@ const ProfilePage = () => {
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative">
                             <img
-                                src={authUser.profilePic || defaultProfilePicture}
+                                src={selectedImage || authUser.profilePic || defaultProfilePicture}
                                 alt="Profile"
                                 className="size-32 rounded-full object-cover border-4 text-black dark:text-white"
                             />
@@ -68,7 +84,7 @@ const ProfilePage = () => {
                         <div className="space-y-3 text-sm">
                             <div className="flex items-center justify-between py-2 border-b border-zinc-700">
                                 <span className="text-black dark:text-white">Member Since</span>
-                                <span className="text-black dark:text-white">{authUser.createdAt.split("T")[0].split("-").reverse().join(".")}</span>
+                                <span className="text-black dark:text-white">{authUser.createdAt?.split("T")[0]}</span>
                             </div>
                             <div className="flex items-center justify-between py-2">
                                 <span className="text-black dark:text-white">Account Status</span>
