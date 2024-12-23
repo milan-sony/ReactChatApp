@@ -1,6 +1,6 @@
 import React from 'react'
 import { userAuthStore } from '../../store/userAuthStore'
-import logo from "./chatIcon.png"
+import logo from "/assets/images/chatIcon.png"
 import { Link } from 'react-router'
 import { LogOut, Settings, User } from 'lucide-react'
 
