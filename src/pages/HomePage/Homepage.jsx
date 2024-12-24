@@ -11,7 +11,7 @@ function Homepage() {
     return (
         <>
             <div className='bg-custblue min-h-dvh'>
-                <div className='flex items-center justify-center pt-20 pb-20 px-4'>
+                <div className='flex items-center justify-center pt-20'>
                     <div className='bg-white rounded-lg shadow-xl w-full max-w-6xl'>
                         <div className='flex h-full rounded-lg overflow-hidden'>
                             <Sidebar />
