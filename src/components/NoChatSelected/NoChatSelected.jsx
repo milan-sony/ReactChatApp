@@ -3,9 +3,8 @@ import logo from "/assets/images/chatIcon.png"
 
 const NoChatSelected = () => {
     return (
-        <div className="w-full flex flex-1 flex-col items-center justify-center p-16">
+        <div className="flex flex-1 flex-col items-center justify-center p-16">
             <div className="max-w-md text-center space-y-6">
-                {/* Icon Display */}
                 <div className="flex justify-center gap-4 mb-4">
                     <div className="relative">
                         <div className="w-16 h-16 rounded-2xl flex items-center justify-center animate-bounce">
