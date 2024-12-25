@@ -15,11 +15,17 @@ function ChatContainer() {
 
     return (
         <>
-            <ChatHeader/>
+            <div className=' flex flex-col w-full'>
+                <ChatHeader />
 
-            {/* <p>Message: hello there</p>
+                <div className='h-full'>
+                    <p>hi</p>
+                </div>
 
-            <MessageInput/> */}
+                <MessageInput />
+
+            </div>
+
         </>
     )
 }
