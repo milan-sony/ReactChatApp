@@ -11,29 +11,29 @@ export const userChatStore = create((set) => ({
 
     // get all users for the sidebar
     getUsers: async () => {
-        set({ isUsersLoading: true });
+        set({ isUsersLoading: true })
         try {
-            const res = await axiosInstance.get("/message/users");
-            set({ users: res.data.message });
+            const res = await axiosInstance.get("/message/users")
+            set({ users: res.data.message })
         } catch (error) {
-            const errorMessage = error.response?.data?.message || "An unexpected error occurred.";
-            toast.error(errorMessage);
+            const errorMessage = error.response.data.message
+            toast.error(errorMessage)
         } finally {
-            set({ isUsersLoading: false });
+            set({ isUsersLoading: false })
         }
     },
 
     // get messages of selected user
     getMessages: async (userId) => {
-        set({ isMessagesLoading: true });
+        set({ isMessagesLoading: true })
         try {
-            const res = await axiosInstance.get(`/message/${userId}`);
-            set({ messages: res.data });
+            const res = await axiosInstance.get(`/message/${userId}`)
+            set({ messages: res.data.message })
         } catch (error) {
-            const errorMessage = error.response?.data?.message || "An unexpected error occurred.";
-            toast.error(errorMessage);
+            const errorMessage = error.response.data.message
+            toast.error(errorMessage)
         } finally {
-            set({ isMessagesLoading: false });
+            set({ isMessagesLoading: false })
         }
     },
 
@@ -41,4 +41,4 @@ export const userChatStore = create((set) => ({
     setSelectedUser: (selectedUser) => {
         set({ selectedUser: selectedUser })
     }
-}));
+}))
