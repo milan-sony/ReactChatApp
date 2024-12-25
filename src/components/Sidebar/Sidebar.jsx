@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { userChatStore } from '../../store/userChatStore';
-import { User, Users } from 'lucide-react';
+import { Users } from 'lucide-react';
 import defaultProfilePicture from "./avatar.png";
 import Skeleton from '../Skeleton/Skeleton';
 import { userAuthStore } from '../../store/userAuthStore';
