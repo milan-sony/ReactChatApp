@@ -40,10 +40,10 @@ export const userChatStore = create((set, get) => ({
     // send message
     sendMessage: async (messageData) => {
         // getter from zustand -  to get the data from create()
-        const { selectedUser, messages } = get()
+        const { selectedUser, messages } = get() // destructuring
         try {
-            const res = await axiosInstance.post(`/message/send${selectedUser._id}`, messageData)
-            set({ messages: [...messages, res.data] })
+            const res = await axiosInstance.post(`/message/send/${selectedUser._id}`, messageData)
+            set({ messages: [...messages, res.data] }) // spread operator
         } catch (error) {
             toast.error(error.response.data.message)
         }

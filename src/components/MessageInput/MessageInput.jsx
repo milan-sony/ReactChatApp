@@ -1,29 +1,121 @@
 import React, { useRef, useState } from 'react'
+import { userChatStore } from '../../store/userChatStore'
+import { Send, Image, X } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 function MessageInput() {
+    const [text, setText] = useState("")
+    const [imagePreview, setImagePreview] = useState(null)
+    const fileInputRef = useRef(null)
+    const { sendMessage } = userChatStore()
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0]
+        if (!file.type.startsWith("image/")) {
+            toast.error("Please select an image file")
+            return
+        }
 
-    const messageInput = () => {
-        const [text, setText] = useState("")
-        const [imagePreview, setImagePreview] = useState(null)
-        const fileInputRef = useRef(null)
+        // if the user select an image, we creates a FileReader and set the image preview state with it
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            setImagePreview(reader.result)
+        }
+        reader.readAsDataURL(file)
     }
-    return (
 
-        <form class="flex items-center">
-            <label for="simple-search" class="sr-only">Search</label>
-            <div class="relative w-full">
-                <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type your message..." required />
-            </div>
-            <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                </svg>
-                <span class="sr-only">Search</span>
-            </button>
-        </form>
+    const removeImage = () => {
+        // sets the image prev to null
+        setImagePreview(null)
+        // sets the current input (if its already exits) value to null
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ""
+        }
+    }
 
-    )
+    const handleSendMessage = async (e) => {
+        e.preventDefault() // prevent default behaviour, refresh page
+        console.log("Text: ", text)
+        if (!text.trim() && !imagePreview) return // check empty message or image
+
+        try {
+            await sendMessage({
+                text: text.trim(),
+                image: imagePreview
+            })
+            // clear form
+            setText("")
+            setImagePreview(null)
+            // sets the current input (if its already exits) value to null
+            if (fileInputRef.current) {
+                fileInputRef.current.value = ""
+            }
+        } catch (error) {
+            console.error("Failed to send message: ", error)
+            console.log("Failed to send message: ", error)
+        }
+
+    }
+
+    return  (
+
+        <div className="p-4 w-full">
+            {imagePreview && (
+                <div className="mb-3 flex items-center gap-2">
+                    <div className="relative">
+                        <img
+                            src={imagePreview}
+                            alt="Preview"
+                            className="w-20 h-20 object-cover rounded-lg border border-zinc-700"
+                        />
+                        <button
+                            onClick={removeImage}
+                            className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-base-300
+                            flex items-center justify-center"
+                            type="button"
+                        >
+                            <X className="size-3" />
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            <form onSubmit={handleSendMessage} className="flex items-center gap-2">
+                <div className="flex-1 flex gap-2">
+                    <input
+                        type="text"
+                        className="w-full input input-bordered rounded-lg input-sm sm:input-md"
+                        placeholder="Type a message..."
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                    />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        ref={fileInputRef}
+                        onChange={handleImageChange}
+                    />
+
+                    <button
+                        type="button"
+                        className={`hidden sm:flex btn btn-circle
+                        ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+                        onClick={() => fileInputRef.current?.click()}
+                    >
+                        <Image size={20} />
+                    </button>
+                </div>
+                <button
+                    type="submit"
+                    className="btn btn-circle"
+                    disabled={!text.trim() && !imagePreview}
+                >
+                    <Send size={20} />
+                </button>
+            </form>
+        </div>
+    );
 }
 
 export default MessageInput
