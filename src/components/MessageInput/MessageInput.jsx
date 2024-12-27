@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 
 function MessageInput() {
 
-    
-    const messageInput = ()=>{
-        const [text, setText ] = useState("")
+
+    const messageInput = () => {
+        const [text, setText] = useState("")
         const [imagePreview, setImagePreview] = useState(null)
-        
+
 
     }
     return (
