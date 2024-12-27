@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 function MessageInput() {
 
@@ -6,8 +6,7 @@ function MessageInput() {
     const messageInput = () => {
         const [text, setText] = useState("")
         const [imagePreview, setImagePreview] = useState(null)
-
-
+        const fileInputRef = useRef(null)
     }
     return (
 
