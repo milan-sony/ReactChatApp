@@ -18,12 +18,9 @@ function ChatContainer() {
             <div className=' flex flex-col w-full'>
                 <ChatHeader />
 
-                <div className='h-full'>
-                    <p>hi</p>
-                </div>
+                <Skeleton />
 
                 <MessageInput />
-
             </div>
 
         </>
