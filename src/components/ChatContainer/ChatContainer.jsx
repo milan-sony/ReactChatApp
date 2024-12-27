@@ -5,6 +5,7 @@ import ChatHeader from '../ChatHeader/ChatHeader';
 import MessageInput from '../MessageInput/MessageInput';
 import { userAuthStore } from '../../store/userAuthStore';
 import defaultProfilePicture from "./avatar.png";
+import { formatMessageTime } from '../../lib/utils';
 
 function ChatContainer() {
     const { messages, getMessages, isMessagesLoading, selectedUser } = userChatStore()
@@ -41,9 +42,10 @@ function ChatContainer() {
                                     </div>
                                 </div>
                                 <div className="chat-header">
-                                    <time className="text-xs opacity-50">{
-                                        message.createdAt
-                                    }</time>
+                                    <time className="text-xs opacity-50">
+                                        {
+                                            formatMessageTime(message.createdAt)
+                                        }</time>
                                 </div>
                                 <div className='chat-bubble flex'>
                                     {
