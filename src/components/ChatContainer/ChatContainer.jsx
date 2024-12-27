@@ -47,7 +47,7 @@ function ChatContainer() {
                                             formatMessageTime(message.createdAt)
                                         }</time>
                                 </div>
-                                <div className='chat-bubble flex'>
+                                <div className='chat-bubble flex flex-col'>
                                     {
                                         message.image && (
                                             <image src={message.image} alt="attachment" className='rounded-md mb-2'
