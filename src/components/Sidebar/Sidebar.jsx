@@ -37,7 +37,7 @@ function Sidebar() {
                                             className="size-6 object-cover rounded-full"
                                         />
                                         <span className="flex-1 ms-3 whitespace-nowrap capitalize">{user.fullName}</span>
-                                        <span className="inline-flex items-center justify-center px-2 ms-3 rounded-full dark:text-gray-300">{onlineUsers ? "🟢" : "🔴"}</span>
+                                        <span className="inline-flex items-center justify-center px-2 ms-3 rounded-full dark:text-gray-300">{onlineUsers.includes(user._id)? "🟢" : "🔴"}</span>
                                     </a>
                                 </li>
                             ))
