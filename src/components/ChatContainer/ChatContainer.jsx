@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { userChatStore } from '../../store/userChatStore'
 import Skeleton from '../Skeleton/Skeleton'
 import ChatHeader from '../ChatHeader/ChatHeader';
@@ -8,13 +8,28 @@ import defaultProfilePicture from "./avatar.png";
 import { formatMessageTime } from '../../lib/utils';
 
 function ChatContainer() {
-    const { messages, getMessages, isMessagesLoading, selectedUser } = userChatStore()
+    const { messages, getMessages, isMessagesLoading, selectedUser, subscribeToMessages, unSubscribeFromMessages } = userChatStore()
 
     const { authUser } = userAuthStore()
 
+    const messageEndRef = useRef(null)
+
     useEffect(() => {
         getMessages(selectedUser._id);
-    }, [selectedUser._id, getMessages]);
+        subscribeToMessages()
+
+        return () => unSubscribeFromMessages()
+
+    }, [selectedUser._id, getMessages, subscribeToMessages, unSubscribeFromMessages]);
+
+    // scroll to the new message automatically when new message come
+    useEffect(() => {
+        if (messageEndRef.current && messages) {
+            messageEndRef.current.scrollIntoView({
+                behavior: "smooth"
+            })
+        }
+    }, [messages])
 
     if (isMessagesLoading) {
         return (
@@ -35,7 +50,9 @@ function ChatContainer() {
                 <div className='flex-1 overflow-y-auto p-4 space-y-4'>
                     {
                         messages.map((message) => (
-                            <div key={message._id} className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}>
+                            <div key={message._id} className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+                                ref={messageEndRef}
+                            >
                                 <div className='chat-image avatar'>
                                     <div className='size-10 rounded-full border'>
                                         <img src={message.senderId === authUser._id ? authUser.profilePicture || defaultProfilePicture : selectedUser.profilePicture || defaultProfilePicture} alt="Profile Picture" />
