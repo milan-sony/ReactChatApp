@@ -63,6 +63,10 @@ export const userChatStore = create((set, get) => ({
         const socket = userAuthStore.getState().socket
 
         socket.on("newMessage", (newMessage) => {
+
+            // check if the message is send to the selected user
+            if (newMessage.senderId !== selectedUser._id) return
+
             set({
                 messages: [...get().messages, newMessage] // spread the existing messages and add's new message
             })
