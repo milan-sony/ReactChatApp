@@ -49,8 +49,8 @@ function LoginPage() {
 
     return (
         <>
-            <div className='w-full'>
-                <div className="contain py-16">
+            <div className='w-full h-screen'>
+                <div className="contain pt-36">
                     <div className="bg-white max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden dark:bg-slate-900">
                         <h2 className="text-2xl uppercase font-black mb-1 font-Open-Sans text-custblue">Login</h2>
                         <p className="text-gray-600 mb-6 text-sm dark:text-white font-Open-Sans">Welcome! So good to have you back!</p>
