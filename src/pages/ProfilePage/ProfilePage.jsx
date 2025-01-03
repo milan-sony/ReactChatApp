@@ -1,6 +1,6 @@
 import { Camera, Mail, User } from "lucide-react"
 import { userAuthStore } from "../../store/userAuthStore"
-import defaultProfilePicture from "./avatar.png"
+import defaultProfilePicture from "/assets/images/avatar.png"
 import { useState } from "react";
 
 const ProfilePage = () => {

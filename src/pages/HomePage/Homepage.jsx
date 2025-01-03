@@ -10,10 +10,10 @@ function Homepage() {
 
     return (
         <>
-            <div className='bg-custblue min-h-dvh'>
-                <div className='flex items-center justify-center pt-20'>
+            <div className='bg-custblue h-screen'>
+                <div className='flex items-center justify-center pt-36'>
                     <div className='bg-white rounded-lg shadow-xl w-full max-w-6xl'>
-                        <div className='flex h-full rounded-lg overflow-hidden'>
+                        <div className='flex min-h-[500px] max-h-[500px] rounded-lg overflow-hidden'>
                             <Sidebar />
                             {!selectedUser ? <NoChatSelected /> : <ChatContainer />}
                         </div>

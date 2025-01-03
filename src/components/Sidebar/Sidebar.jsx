@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { userChatStore } from '../../store/userChatStore';
 import { Users } from 'lucide-react';
-import defaultProfilePicture from "./avatar.png";
+import defaultProfilePicture from "/assets/images/avatar.png"
 import Skeleton from '../Skeleton/Skeleton';
 import { userAuthStore } from '../../store/userAuthStore';
 
@@ -18,27 +18,29 @@ function Sidebar() {
 
     return (
         <>
-            <aside id="default-sidebar" aria-label="Sidebar" className='w-1/3'>
-                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+            <aside id="default-sidebar" aria-label="Sidebar" className='min-w-[50px] md:min-w-[200px]'>
+                <div className="h-full px-3 py-4 overflow-x-hidden overflow-y-auto bg-gray-50 dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-                                <Users className='w-5 h-5 text-gray-500 dark:text-gray-400' />
-                                <span className="ms-3">Chat</span>
-                            </a>
+                            <span className="flex items-center p-2 text-gray-600 rounded-lg dark:text-white">
+                                <Users className='size-5 text-gray-600 dark:text-gray-400' />
+                                <span className="ml-3 max-sm:hidden">Chat</span>
+                            </span>
                         </li>
                         {
                             users.map((user) => (
                                 <li key={user._id} onClick={() => setSelectedUser(user)}>
-                                    <a href="#" className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedUser?._id === user._id ? "bg-custblue ring-1 ring-custblue/50" : ""}`}>
+                                    <span className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 ${selectedUser?._id === user._id ? "bg-custblue ring-1 ring-custblue" : ""}`}>
                                         <img
                                             src={user.profilePicture || defaultProfilePicture}
                                             alt={user.fullName}
-                                            className="size-6 object-cover rounded-full"
+                                            className="size-8 object-cover rounded-full"
                                         />
-                                        <span className="flex-1 ms-3 whitespace-nowrap capitalize">{user.fullName}</span>
-                                        <span className="inline-flex items-center justify-center px-2 ms-3 rounded-full dark:text-gray-300">{onlineUsers.includes(user._id)? "🟢" : "🔴"}</span>
-                                    </a>
+                                        <div className='ml-3 max-sm:hidden'>
+                                            <p className='text-sm'>{user.fullName}</p>
+                                            <p className='text-xs font-Open-Sans text-gray-700 dark:text-gray-500'>{onlineUsers.includes(user._id) ? "🟢 Online" : "🔴 Offline"}</p>
+                                        </div>
+                                    </span>
                                 </li>
                             ))
                         }

@@ -43,7 +43,7 @@ function ChatContainer() {
 
     return (
         <>
-            <div className=' flex flex-col w-full overflow-auto'>
+            <div className=' flex flex-col w-full overflow-auto bg-white dark:bg-black'>
                 <ChatHeader />
 
                 {/* message container */}

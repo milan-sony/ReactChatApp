@@ -1,7 +1,7 @@
 import React from 'react'
 import { userChatStore } from '../../store/userChatStore';
 import { userAuthStore } from '../../store/userAuthStore';
-import defaultProfilePicture from "./avatar.png"
+import defaultProfilePicture from "/assets/images/avatar.png"
 import { X } from 'lucide-react';
 
 
