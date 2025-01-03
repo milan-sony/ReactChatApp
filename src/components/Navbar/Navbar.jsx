@@ -7,7 +7,7 @@ function Navbar() {
     const { logout, authUser } = userAuthStore()
 
     return (
-        <div className="navbar bg-white dark:bg-black content-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:px-4">
+        <div className="navbar bg-white dark:bg-black content-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:px-4 fixed">
             <div className="flex-1">
                 <Link to="/" className='flex items-center ml-4'><img src={logo} className='h-8 mr-2' alt='logo' /><span className="text-2xl text-custblue dark:text-custblue uppercase font-black font-Open-Sans">Chatly</span></Link>
             </div>
