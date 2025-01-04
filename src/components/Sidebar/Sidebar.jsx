@@ -37,7 +37,7 @@ function Sidebar() {
                                             className="size-8 object-cover rounded-full"
                                         />
                                         <div className='ml-3 max-sm:hidden'>
-                                            <p className='text-sm'>{user.fullName}</p>
+                                            <p className='text-sm capitalize'>{user.fullName}</p>
                                             <p className='text-xs font-Open-Sans text-black dark:text-white'>{onlineUsers.includes(user._id) ? "🟢 Online" : "🔴 Offline"}</p>
                                         </div>
                                     </span>
