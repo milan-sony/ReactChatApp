@@ -40,12 +40,10 @@ function SignupPage() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
-        console.log(formData)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("formData", formData)
         const success = validateForm()
         if (success === true) {
             signup(formData)

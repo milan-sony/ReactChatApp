@@ -11,7 +11,6 @@ const ProfilePage = () => {
     const handleImageUpload = async (e) => {
         const file = e.target.files[0]
 
-        console.log("file:", file)
         if (!file) {
             return
         }

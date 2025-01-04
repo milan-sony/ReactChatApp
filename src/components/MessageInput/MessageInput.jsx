@@ -35,7 +35,6 @@ function MessageInput() {
 
     const handleSendMessage = async (e) => {
         e.preventDefault() // prevent default behaviour, refresh page
-        console.log("Text: ", text)
         if (!text.trim() && !imagePreview) return // check empty message or image
 
         try {
