@@ -30,7 +30,7 @@ function Sidebar() {
                         {
                             users.map((user) => (
                                 <li key={user._id} onClick={() => setSelectedUser(user)}>
-                                    <span className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 ${selectedUser?._id === user._id ? "bg-custblue ring-1 ring-custblue" : ""}`}>
+                                    <span className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 ${selectedUser?._id === user._id ? "bg-custblue text-white ring-1 ring-custblue" : ""}`}>
                                         <img
                                             src={user.profilePicture || defaultProfilePicture}
                                             alt={user.fullName}
@@ -38,7 +38,7 @@ function Sidebar() {
                                         />
                                         <div className='ml-3 max-sm:hidden'>
                                             <p className='text-sm'>{user.fullName}</p>
-                                            <p className='text-xs font-Open-Sans text-gray-700 dark:text-gray-500'>{onlineUsers.includes(user._id) ? "🟢 Online" : "🔴 Offline"}</p>
+                                            <p className='text-xs font-Open-Sans text-black dark:text-white'>{onlineUsers.includes(user._id) ? "🟢 Online" : "🔴 Offline"}</p>
                                         </div>
                                     </span>
                                 </li>

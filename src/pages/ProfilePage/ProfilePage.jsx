@@ -27,11 +27,11 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="h-screen">
+        <div className="w-full h-screen pt-20">
             <div className="max-w-2xl mx-auto p-4 py-8">
                 <div className="bg-white shadow dark:bg-slate-900 rounded-xl p-6 space-y-8">
                     <div className="text-center">
-                        <h1 className="font-black text-black dark:text-white font-Open-Sans uppercase text-2xl">Profile</h1>
+                        <h1 className="font-black text-custblue font-Open-Sans uppercase text-2xl">Profile</h1>
                         <p className="mt-2 text-black dark:text-white">Your profile information</p>
                     </div>
 
@@ -81,7 +81,7 @@ const ProfilePage = () => {
                         </div>
                     </div>
                     {/* Account info */}
-                    <div className="mt-6 bg-gray-800 rounded-xl p-6">
+                    <div className="mt-6 bg-gray-100 dark:bg-gray-700 rounded-xl p-6">
                         <h2 className="text-lg font-medium  mb-4 text-black dark:text-white">Account Information</h2>
                         <div className="space-y-3 text-sm">
                             <div className="flex items-center justify-between py-2 border-b border-zinc-700">
