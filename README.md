@@ -4,7 +4,7 @@ A simple chat app build on **MERN stack**
 
 [API link](https://github.com/milan-sony/api_chatapp)
 
-## 🗝 Key features
+## 🗝 Key features of ChatApp
 
 ✨ TailwindCSS + Daisy UI
 
