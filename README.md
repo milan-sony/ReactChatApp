@@ -51,3 +51,7 @@ VITE_APP_API_URL = http://localhost:3000/api/v1
 ```
 npm run dev
 ```
+
+### Screenshot
+
+<img src="./Chat.jpg" alt="screenshot"/>
