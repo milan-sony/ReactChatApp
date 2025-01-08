@@ -2,7 +2,7 @@
 
 A simple chat app build on **MERN stack**
 
-[API link](https://github.com/milan-sony/api_chatapp)
+[Backend API URL](https://github.com/milan-sony/api_chatapp)
 
 ## 🗝 Key features of ChatApp
 
